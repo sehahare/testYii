@@ -19,7 +19,9 @@
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*",
         "kartik-v/yii2-widget-datepicker": "@dev",
-        "wbraganca/yii2-dynamicform": "*"
+        "wbraganca/yii2-dynamicform": "*",
+         "phpoffice/phpexcel": "dev-develop",
+         "2amigos/yii2-gallery-widget": "~1.0"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

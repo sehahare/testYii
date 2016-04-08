@@ -3,6 +3,20 @@ body {
     height: 100%;
 }
 
+.image_test{
+   height: 50%;
+    width: 50%;
+    padding: 62px;
+    margin-left: 9%;
+    }
+.image_test img{
+  
+    width: 280px;
+    height: 250px;
+  
+    }
+
+
 .wrap {
     min-height: 100%;
     height: auto;
@@ -102,4 +116,20 @@ a.desc:after {
 
 .nav > li > form > button:hover {
     text-decoration: none;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #ACA899;
+}
+
+.navbar-brand>img {
+    display: block; 
+    width: 148px;
+    height: 51px;
+    margin-top: -15px;
+}
+
+img_list_products{
+    width: 50px;
+    height: 50px;
 }

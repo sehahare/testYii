@@ -19,6 +19,22 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/site.css',
+        'css/bootstrap.css',
+        'css/landing-page.css',
+        'css/bootstrap.min.css',
+        'css/font-awesome.css',
+        'css/font-awesome.min.css'
+        
+    ];
+    
+    public $fonts = [
+        'fonts/glyphicons-halflings-regular.svg',
+        'fonts/glyphicons-halflings-regular.ttf',
+        'fonts/glyphicons-halflings-regular.eot',
+        'fonts/glyphicons-halflings-regular.woff',
+        'fonts/glyphicons-halflings-regular.woff',
+        'fonts/FontAwesome.otf',
+        'fonts/fontawesome-webfont.ttf',
     ];
     public $js = [
     ];

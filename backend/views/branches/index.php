@@ -16,10 +16,10 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="branches-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::button('Create Branches', ['value'=>Url::to('index.php?r=branches/create'), 'class' => 'btn btn-success', 'id' =>'modalButton']) ?>
+         <?= Html::a('Create Branches', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     
     <?php
@@ -33,7 +33,18 @@ $this->params['breadcrumbs'][] = $this->title;
     Modal::end();
     ?>
     
-   <?php Pjax::begin(); ?>
+    <?php
+    $this->params['test']= 'this is a test string';
+    $this->beginBlock('advertisement');?>
+    <h3>This is a Advertisement</h3>
+    <?php $this->endBlock(); ?>
+
+        
+   
+    
+      
+
+    
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,

@@ -22,11 +22,11 @@ class SiteController extends Controller
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['login', 'error'],
+                        'actions' => ['login', 'error', 'language'],
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index'],
+                        'actions' => ['logout', 'index', 'set-cookie', 'show-cookie'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -35,7 +35,7 @@ class SiteController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'logout' => ['post'],
+                  //  'logout' => ['post'],
                 ],
             ],
         ];
@@ -44,6 +44,25 @@ class SiteController extends Controller
     /**
      * @inheritdoc
      */
+    
+     public function actionSignup()
+    {
+        $authItems = AuthItem::find()->all();
+        $model = new SignupForm();
+        if ($model->load(Yii::$app->request->post())) {
+            if ($user = $model->signup()) {
+                if (Yii::$app->getUser()->login($user)) {
+                    return $this->goHome();
+                }
+            }
+        }
+
+        return $this->render('signup', [
+            'model' => $model,
+            'authItems' => $authItems,
+        ]);
+    }
+
     public function actions()
     {
         return [
@@ -51,6 +70,21 @@ class SiteController extends Controller
                 'class' => 'yii\web\ErrorAction',
             ],
         ];
+    }
+    
+    public function actionSetCookie(){
+        $cookie = new yii\web\Cookie([
+            'name'=>'test', 
+            'value' => 'test cookie value'
+        ]);
+        Yii::$app->getResponse()->getCookies()->add($cookie);
+    }
+
+    public function actionShowCookie(){
+        if( Yii::$app->getRequest()->getCookies()->has('test')){
+            print_r(Yii::$app->getRequest()->getCookies()->getValue('test'));
+            
+        }
     }
 
     public function actionIndex()
@@ -76,6 +110,18 @@ class SiteController extends Controller
             ]);
         }
     }
+    
+    public function actionLanguage(){
+        if(isset($_POST['lang'])){
+            Yii::$app->language = $_POST['lang'];
+            $cookie = new yii\web\Cookie([
+                'name'=>'lang', 
+                'value'=>$_POST['lang']
+            ]);
+            Yii::$app->getResponse()->getCookies()->add($cookie);
+        }
+    }
+    
 
     public function actionLogout()
     {

@@ -19,9 +19,15 @@ class LoginAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/site.css',
+        '//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css',
+        'css/AdminLTE.min.css',
+        'plugins/iCheck/flat/blue.css'
+
     ];
     public $js = [
         'js/main.js',
+        'plugins/iCheck/icheck.min.js'
+        
     ];
     public $depends = [
         'yii\web\YiiAsset',

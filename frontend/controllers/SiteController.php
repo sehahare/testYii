@@ -141,6 +141,16 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+    
+      public function actionTestpage()
+    {
+        return $this->render('TestPage');
+    }
+    
+      public function actionProducts()
+    {
+        return $this->render('products');
+    }
 
     /**
      * Signs user up.

@@ -8,6 +8,8 @@ return [
     'id' => 'app-backend',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
+    'language' =>'en',
+    'sourceLanguage' =>'en',
     'bootstrap' => ['log'],
     'modules' => [
         'settings' => [
@@ -15,6 +17,19 @@ return [
         ],
     ],
     'components' => [
+        
+        'i18n' => [
+            'translations' => [
+                'app' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'sourceLanguage' => 'en',
+                    'fileMap' => [
+                        'app' => 'app.php',
+                        'app/error' => 'error.php',
+                    ],
+                ],
+            ],
+        ],
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
@@ -45,7 +60,8 @@ return [
         ],
         'MyComponent'=>[
             'class'=>'backend\components\MyComponent', 
-        ]
+        ],
+        ],
         
     /*
       'urlManager' => [
@@ -55,6 +71,8 @@ return [
       ],
       ],
      */
+    'as beforeRequest'=>[
+        'class'=>'backend\components\CheckIfLoggedIn', 
     ],
     'params' => $params,
 ];
